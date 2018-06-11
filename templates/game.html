@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+
+<head>
+    <title>猜词</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.1/semantic.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div style="position:absolute; z-index:10; width: 8%; height: 10%; text-align: center; padding-top: 8.4px; padding-left: 22px">
+      <p id="counter" style="color: white; font-size: 6vh;">180</p>
+  </div>
+  <div style="position:absolute; z-index:10; width: 92%; margin-left:8%; height: 10%; text-align: center; padding: 20px; padding-right: 30px">
+      <div class="ui indicating progress" id="timer">
+          <div class="bar"></div>
+      </div>
+  </div>
+
+  <div class="fullscreen" style="background-image:repeating-linear-gradient(45deg,#595959,#595959 50px,#606060 50px,#606060 100px); display: flex; align-items: center; justify-content: center;"><p style="font-size: 25vh; color: white; font-weight: 900;" id="word"></p></div>
+
+  <div class="fullscreen" id="correct" style="background: green; opacity:0.5; display: none;"></div>
+  <div class="fullscreen" id="pass" style="background: red; opacity:0.5; display: none"></div>
+  <div id="result" class="fullscreen" style="background-image:repeating-linear-gradient(45deg,#E9E9E9,#E9E9E9 50px,#EFEFEF 50px,#EFEFEF 100px);z-index: 100; display: none">
+        <div id="home" style="width: 20%; height: 20%; position: absolute; top: 30%; left: 0; display: flex; align-items: center; justify-content: center;"><i class="massive home icon" style="font-size: 15vh; color: #2C3A49;"></i></div>
+        <div id="restart" style="width: 20%; height: 20%; position: absolute; top: 50%; left: 0; display: flex; align-items: center; justify-content: center;"><i class="massive refresh icon" style="font-size: 13vh; color: #2C3A49;"></i></div>
+        <div style="width: 40%; height: 100%; position: absolute; top: 0%; left: 20%; display: flex; align-items: center; justify-content: center; padding: 10% 5%;">
+            <div style="width: 100%; height: 100%; display: flex; overflow:scroll; flex-direction: column;">
+                <div id="word_list" class="ui list">
+                    
+                </div>
+            </div>
+        </div>
+        <div style="flex-direction:column;width: 40%; height: 100%; position: absolute; top: 0; left: 60%; display: flex; align-items: center; justify-content: center;"><div class="circle" style="display: flex; flex-direction:column;justify-content: center;align-items: center;"><p id="correct_no" style="color: #ffbf00;font-size: 15vh; line-height: 110%; font-weight: 600; text-align: center;">4</p></div>
+
+        <div style="width: 100%; height: 60px; align-items: center; display: flex; justify-content: center"><p style="font-size: 5vh;font-weight: 800;color: #959595;">最高纪录:10</p></div>
+        </div>
+
+  </div>
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.1/semantic.js"></script>
+<script src="{{ url_for('static', filename='caici.js')}}"></script>
+<script>
+    var words = {{ items|tojson }};
+    this.words = this.words.replace('"','').split(',');
+</script>
+<link href="{{ url_for('static', filename='caici.css')}}" rel="stylesheet">
+</html>
+
